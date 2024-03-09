@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 100px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      input {
+        padding: 8px 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Personal Information</h1>
+    <form action="">
+      <input type="text" placeholder="First Name" id="firstName" value="" />
+      <input type="text" placeholder="Last Name" id="lastName" value="" />
+      <input type="number" name="age" id="age" placeholder="Age" value="" />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      const form = document.querySelector("form");
+      const firstName = document.querySelector("#firstName");
+      const lastName = document.querySelector("#lastName");
+      const age = document.querySelector("#age");
+      let user = {};
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        user = {
+          firstName: firstName.value,
+          lastName: lastName.value,
+          age: age.value,
+        };
+        form.style.display = "none";
+
+        let box = document.createElement("div");
+        box.innerHTML = `
+        <p><strong>First Name:</strong> ${user.firstName}</p>
+        <p><strong>Last Name:</strong> ${user.lastName}</p>
+             
+                <p><strong>Age:</strong> ${user.age}</p>`;
+        document.body.appendChild(box);
+      });
+    </script>
+  </body>
+</html>
